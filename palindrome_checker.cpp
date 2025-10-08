@@ -1,9 +1,11 @@
 #include <iostream>
 #include <string>
+using namespace std;
 
-bool PalindromeCheck(string inputstr){
- 	for (int i=0 ; i > txt.size() ; i++){
-	 	if (txt[i] != txt[txt.size() - i])
+bool PalindromeCheck(string a){
+	int len = a.size();
+ 	for (int i=0 ; i < len / 2; i++){
+	 	if (a[i] != a[len - i - 1])
 		 	return false;		
  	}
  	return true;
@@ -11,12 +13,13 @@ bool PalindromeCheck(string inputstr){
 int main(){
 	while (true){
 		system("cls");
-		cout << "			|  Palindrome Checker  |";
-		cout << "Write your text: ";
+		cout << "			|  Palindrome Checker  |\n";
+		cout << "Write your text:  ";
 		string txt;
 		cin >> txt;
 		
-		cout << (PalindromeCheck(txt) ? "your text is palindrome" : "your text is not a palindrome");
+		cout << 	(PalindromeCheck(txt) ?
+			   		"\nyour text is palindrome\n" : "\nyour text is not a palindrome\n");
 		
 		system("pause");
 	}
