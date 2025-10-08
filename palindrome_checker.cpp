@@ -1,9 +1,17 @@
 #include <iostream>
 #include <string>
+#include <cctype>
 using namespace std;
 
 bool PalindromeCheck(string a){
-	int len = a.size();
+ 	string clean = "";
+ 	for (char c : a) {
+	    	if (isalnum(c)) 
+	       	clean += tolower(c);
+	}
+ 	a = clean;  // change a to a clean and lowercase string
+ 	int len = a.size();
+	
  	for (int i=0 ; i < len / 2; i++){
 	 	if (a[i] != a[len - i - 1])
 		 	return false;		
@@ -12,16 +20,17 @@ bool PalindromeCheck(string a){
 }
 int main(){
 	while (true){
-		system("cls");
-		cout << "			|  Palindrome Checker  |\n";
-		cout << "Write your text:  ";
-		string txt;
-		cin >> txt;
+	 	system("cls");
+	 	cout << "			|  Palindrome Checker  |\n";
+	 	cout << "Write your text:  ";
+	 	string txt;
+	 	cin.ignore();
+	 	getline(cin, txt);
 		
-		cout << 	(PalindromeCheck(txt) ?
+	 	cout << 	(PalindromeCheck(txt) ?
 			   		"\nyour text is palindrome\n" : "\nyour text is not a palindrome\n");
 		
-		system("pause");
+	 	system("pause");
 	}
 	return 0;
 }
